@@ -3,6 +3,9 @@ import Navbar from "./Navbar";
 import MergeSort from "./algos";
 const Visualizer = (props) => {
   const [array, setArray] = useState(null);
+  // useEffect(() => {
+  //   newArray();
+  // }, []);
 
   function newArray() {
     const array = [];
@@ -12,14 +15,15 @@ const Visualizer = (props) => {
     setArray(array);
     console.log(array);
   }
+  function mergedArray() {
+    let newarr = MergeSort(array);
+    setArray(newarr);
+    console.log(array);
+  }
 
-  useEffect(() => {
-    newArray();
-  }, []);
-  MergeSort([4,2,1,4,2,3,5,6])
   return (
     <>
-      <Navbar arr={array} newArray={newArray} />
+      <Navbar arr={array} newArray={newArray} mergedArr={mergedArray} />
       <div className="bar-container">
         {array &&
           array.map((value, index) => (
